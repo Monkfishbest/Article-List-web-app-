@@ -1,14 +1,30 @@
 import React, {Component} from 'react';
 import StoriesList from "../components/StoriesList";
+import StorySearch from "../components/StorySearch";
+import "./StoriesContainer.css";
 
 class StoriesContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       listOfStoriesID: [],
-      listOf20Stories: []
+      listOf20Stories: [],
+      searchInput: ""
     }
+    this.handleSearch = this.handleSearch.bind(this)
   }
+
+  handleSearch(input){
+    this.setState({searchInput: input})
+    const filteredStories = []
+    for(const story of this.state.listOf20Stories){
+      if(story.title.toLowerCase().includes(input.toLowerCase())){
+        filteredStories.push(story)
+      }
+    }
+    this.setState({listOf20Stories: filteredStories})
+  }
+
   componentDidMount(){
     const url = 'https://hacker-news.firebaseio.com/v0/topstories.json';
     fetch(url)
@@ -16,6 +32,7 @@ class StoriesContainer extends Component {
     .then(returnedStories => this.setState({listOfStoriesID: returnedStories}))
     .catch(err => console.error(err))
   }
+
   componentDidUpdate(){
     if(this.state.listOfStoriesID.length > 0 && this.state.listOf20Stories.length === 0){
       const listOf20StoriesID = this.state.listOfStoriesID.slice(0, 20)
@@ -37,11 +54,10 @@ class StoriesContainer extends Component {
       }
     }
 
-
-
   render(){
     return(
-      <div>
+      <div className="stories-container">
+      <StorySearch onHandleSearch={this.handleSearch}/>
       <StoriesList listOf20Stories={this.state.listOf20Stories}/>
       <h1>:) </h1>
       </div>
