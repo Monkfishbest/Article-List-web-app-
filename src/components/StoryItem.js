@@ -2,8 +2,11 @@ import React from 'react';
 
 const StoryItem = (props) => {
   return(
-    <h1> This is a story item</h1>
+    <div>
+    <h1> Title: <a href={props.story.url} target="_blank" rel="noopener noreferrer">{props.story.title}</a> </h1>
+    <h1> Author: {props.story.by} </h1>
+    </div>
   )
 }
 
-export default StoryItem; 
+export default StoryItem;

@@ -2,10 +2,14 @@ import React from 'react';
 import StoryItem from "./StoryItem";
 
 const StoriesList = (props) => {
+  const storyNodes = props.listOf20Stories.map((story, index) => {
+    return (
+      <StoryItem key={index} story={story}></StoryItem>
+    )
+  })
   return(
     <div>
-    <StoryItem/> 
-    <h1>I am a story list I hope i work :)  </h1>
+    {storyNodes}
     </div>
   )
 }
