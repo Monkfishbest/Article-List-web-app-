@@ -1,3 +1,11 @@
+
+## About
+
+Small web app that hits an API of news stories and displays them as a list.
+Built with React and help from my fellow students as a practice exercise at code clan. 
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

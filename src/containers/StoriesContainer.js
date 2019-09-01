@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+fimport React, {Component} from 'react';
 import StoriesList from "../components/StoriesList";
 import StorySearch from "../components/StorySearch";
 import "./StoriesContainer.css";
